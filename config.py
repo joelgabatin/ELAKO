@@ -9,7 +9,6 @@ class Config:
     DATABASE_USER = 'xkwo0puwn8wpp11p'
     DATABASE_PASSWORD = 'mfbjl6adjf3btrxg'
     DATABASE_NAME = 'lxm14898h1ry2khd'
-    DATABASE_PORT = 3306
 
     # Other application-specific configuration settings
     DEBUG = False
