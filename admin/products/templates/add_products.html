@@ -1,0 +1,98 @@
+{% extends 'admin/admin_base.html' %}
+
+{% block title %}ELAKO - ADMIN{% endblock %}
+
+{########################################################################################################################################}
+
+{% block content %}
+
+<div class="container">
+
+  <nav class="mb-2" aria-label="breadcrumb">
+    <ol class="breadcrumb mb-0">
+      <li class="breadcrumb-item"><a href="#">Products</a></li>
+      <li class="breadcrumb-item"><a href="#">Add Products</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Product Details</li>
+    </ol>
+  </nav>
+  <div class="row align-items-center justify-content-between g-3 mb-4">
+    <div class="col-auto">
+      <h2 class="mb-0">Product Details</h2>
+    </div>
+    <div class="col-auto">
+
+    </div>
+  </div>
+  <form action="{{ url_for('admin_products_bp.add_products') }}" method="POST" enctype="multipart/form-data">
+    <div class="row g-3 mb-5">
+        <div class="col-12 col-lg-12">
+            <img id="image-preview" style="max-width: 100px; max-height: 100px;">
+        </div>
+
+        <div class="col-12 col-lg-6">
+            <label for="profile-picture" class="form-label text-1000 fw-bold fs-0 ps-0 text-capitalize lh-sm">Product Picture</label>
+            <input type="file" class="form-control" name="image" id="image" accept="image/*" onchange="previewImage(this)" required>
+        </div>
+        <div class="col-12 col-lg-6">
+              <label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="fullName">Farmer ID</label>
+              <input class="form-control" id="farmer_id" name="farmer_id" type="text" placeholder="Enter Farmer ID eg.'FARMER-89598202'" required value="">
+        </div>
+        <div class="col-lg-6">
+          <div class="row g-3">
+              <div class="col-12 col-lg-12">
+                  <label class="form-label text-1000 fw-bold fs-0 ps-0 text-capitalize lh-sm" for="facebook">Product Name</label>
+                  <input class="form-control" id="product_name" name="product_name" type="text" placeholder="Product Name">
+              </div>
+              <div class="col-12 col-lg-12"><label class="form-label text-1000 fs-0 ps-0 text-capitalize lh-sm" for="gender">Product Category</label>
+                  <select class="form-select" id="product_category_id" name="product_category_id" required>
+                        <option value="" disabled selected>Select Product Category</option>
+                        {% for row2 in all_product_category_data %}
+                            <option value="{{ row2.product_cat_id }}"> {{ row2.product_cat_name }}   </option>
+                        {% endfor %}
+                  </select>
+              </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6">
+            <label for="address" class="text-1000 fw-bold fs-0 ps-0 text-capitalize lh-sm">Product Descrition</label>
+            <textarea class="form-control" name="product_description" id="product_description" placeholder="Enter Product Description" rows=9 required></textarea>
+        </div>
+    </div>
+    <div class="text-end"><button class="btn btn-primary px-7" type="submit">Add Products</button></div>
+  </form>
+
+</div><!-- end of .container-->
+
+
+{% endblock %}
+
+{########################################################################################################################################}
+
+{# include the static css of page#}
+{% block page_static_css %}
+
+    <!-- rooms_view CSS -->
+    <link rel="stylesheet" href="{{ url_for('admin_farmer_bp.static', filename='css/farmer_view.css') }}">
+
+{% endblock %}
+
+{# include the static js of page#}
+{% block page_static_js %}
+
+     <!-- rooms_view JS -->
+    <script src="{{  url_for('admin_farmer_bp.static', filename='js/farmer_view.js') }}"></script>
+    <script>
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    var imagePreview = document.getElementById('image-preview');
+                    imagePreview.src = e.target.result;
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+{% endblock %}

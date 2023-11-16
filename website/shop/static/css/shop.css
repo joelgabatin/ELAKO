@@ -1,0 +1,17 @@
+/*
+------------------------------------------------------
+------------------------------------------------------
+This is the css per page, any changes to the page
+------------------------------------------------------
+------------------------------------------------------
+*/
+.gallery-images {
+    display: flex;
+    justify-content: center;
+    height: 150px;
+}
+
+.gallery-images img {
+    height: 200px;
+    padding: 10px;
+}

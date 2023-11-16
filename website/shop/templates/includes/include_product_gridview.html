@@ -1,0 +1,75 @@
+<div class="tab-pane fade active show" id="liton_product_grid">
+                    <div class="ltn__product-tab-content-inner ltn__product-grid-view">
+                        <div class="row">
+
+                            {% for row in products_data %}
+                            <!-- ltn__product-item -->
+                            <div class="col-xl-4 col-sm-6 col-6">
+                                <div class="ltn__product-item ltn__product-item-3 text-center mb-4">
+                                    <div class="product-img">
+                                        <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view_modal"
+                                                       data-products-id="{{ row.product_id }}"
+                                                       data-products-name="{{ row.product_name }}"
+                                                       data-products-old-price="0"
+                                                       data-products-new-price="0"
+                                                       data-products-category="{{ row.product_cat_name }}"
+                                                       data-products-photo="{{ row.product_photo }}">
+                                            <img src="{{ url_for('static', filename='website/img/product/' ~ row.product_photo)}}">
+                                        </a>
+                                        <div class="product-badge">
+                                            <span class="sale-badge">Ends:</span>
+                                            <div class="bg-white-- countdown" data-countdown="2023/10/28"></div>
+                                        </div>
+                                        <div class="product-hover-action">
+                                            <ul>
+{#                                                <li>#}
+{#                                                    <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal"#}
+{#                                                       data-products-id="{{ row.products_id }}"#}
+{#                                                       data-products-name="{{ row.products_name }}"#}
+{#                                                       data-products-old-price="{{ row.products_old_price }}"#}
+{#                                                       data-products-new-price="{{ row.products_new_price }}"#}
+{#                                                       data-products-photo="{{ row.products_photo }}">#}
+{#                                                        <i class="far fa-eye"></i>#}
+{#                                                    </a>#}
+{#                                                </li>#}
+                                                <li>
+                                                    <a href="javascript:void(0)" title="Bid Now">
+                                                        <i class="fa fa-gavel" aria-hidden="true"></i>
+                                                    </a>
+                                                </li>
+                                                <li>
+                                                    <a href="#" title="Wishlist" data-bs-toggle="modal" data-bs-target="#addtowishlist_modal"
+                                                       data-products-name="{{ row.product_name }}"
+                                                       data-products-photo="{{ row.product_photo }}">
+                                                       <i class="far fa-heart"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="product-info">
+                                        <div>
+                                            <h2 class="product-title text-center"><a href="#">{{ row.product_name }}</a></h2>
+                                        </div>
+                                        <div class="product-bid-info">
+                                            <div class="d-flex dalign-items-center">
+                                                <span class="starting-bid">Starting Bid: </span>
+                                                <span class="starting-bid-price green"> ₱ 0</span>
+                                            </div>
+                                            <div class="d-flex dalign-items-center">
+                                                    <span class="current-bid">Highest Bid: </span>
+                                                    <span class="current-bid-price"> ₱ 0</span>
+                                            </div>
+                                        </div>
+                                        <div class="product-bid-inf d-flex justify-content-end">
+                                            <span class="starting-bid-price red">0 Bids</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- -->
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                </div>

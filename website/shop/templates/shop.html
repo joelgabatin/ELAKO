@@ -1,0 +1,86 @@
+{% extends 'website/website_base.html' %}
+
+{% block title %}Gallery Page{% endblock %}
+
+{% block content %}
+
+    <!-- PRODUCT DETAILS AREA START -->
+    <div class="ltn__product-area ltn__product-gutter mb-120 pt-190">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <div class="ltn__shop-options">
+                        <ul>
+                            <li>
+                                <div class="ltn__grid-list-tab-menu ">
+                                    <div class="nav">
+                                        <a class="active show" data-bs-toggle="tab" href="#liton_product_grid"><i class="fas fa-th-large"></i></a>
+                                        <a data-bs-toggle="tab" href="#liton_product_list"><i class="fas fa-list"></i></a>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                               <div class="showing-product-number text-right text-end">
+                                    <span>Showing 1–12 of 18 results</span>
+                                </div>
+                            </li>
+                            <li>
+                               <div class="short-by text-center">
+                                    <select class="nice-select">
+                                        <option>Default Sorting</option>
+                                        <option>Sort by popularity</option>
+                                        <option>Sort by new arrivals</option>
+                                        <option>Sort by price: low to high</option>
+                                        <option>Sort by price: high to low</option>
+                                    </select>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="tab-content">
+
+                        <!-- PRODUCT GRID VIEW -->
+                        {% include 'includes/include_product_gridview.html' %}
+                        <!-- ./ PRODUCT GRID LIST VIEW END-->
+
+                        <!-- PRODUCT LIST VIEW -->
+                        {% include 'includes/include_product_listview.html' %}
+                        <!-- ./ PRODUCT LIST VIEW -->
+
+                    </div>
+                    <div class="ltn__pagination-area text-center">
+                        <div class="ltn__pagination">
+                            <ul>
+                                <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
+                                <li><a href="#">1</a></li>
+                                <li class="active"><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">...</a></li>
+                                <li><a href="#">10</a></li>
+                                <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    {% include 'includes/include_shopsidebar.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- PRODUCT DETAILS AREA END -->
+
+{% endblock %}
+
+
+{########################################################################################################################################}
+
+{# include the static css of page#}
+{% block page_static_css %}
+    <link rel="stylesheet" href="{{ url_for('w_shop.static', filename='css/shop.css') }}">
+{% endblock %}
+
+{# include the static js of page#}
+{% block page_static_js %}
+    <script src="{{  url_for('w_shop.static', filename='js/shop.js') }}"></script>
+{% endblock %}

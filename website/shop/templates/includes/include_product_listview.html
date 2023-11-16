@@ -1,0 +1,80 @@
+
+
+
+<div class="tab-pane fade" id="liton_product_list">
+    <div class="ltn__product-tab-content-inner ltn__product-list-view">
+        <div class="row">
+
+            {% for row in products_data %}
+            <!-- ltn__product-item -->
+            <div class="col-lg-12">
+                <div class="ltn__product-item ltn__product-item-3 mb-4">
+                    <div class="product-img">
+                        <a href="#" data-bs-toggle="modal" data-bs-target="#quick_view_modal"
+                                       data-products-id="{{ row.product_id }}"
+                                       data-products-name="{{ row.product_name }}"
+                                       data-products-old-price="0"
+                                       data-products-new-price="0"
+                                       data-products-category="{{ row.product_cat_name }}"
+                                       data-products-photo="{{ row.product_photo }}">
+                            <img src="{{ url_for('static', filename='website/img/product/' ~ row.product_photo)}}">
+                        </a>
+                        <div class="listview product-badge">
+                            <span class="badge sale-badge">Ends:</span>
+                            <div class="bg-white-- countdown" data-countdown="2023/10/28"></div>
+                        </div>
+                    </div>
+                    <div class="product-info">
+                        <h2 class="product-title"><a href="javascript:void(0)">{{ row.product_name }}</a></h2>
+                        <div class="product-brief">
+                            <p class="mb-1">{{ row.product_description }}</p>
+                        </div>
+                        <div class="d-flex dalign-items-center">
+                            <span class="starting-bid">Starting Bid: &nbsp;</span>
+                            <span class="starting-bid-price green">₱ 0</span>
+                        </div>
+                        <div class="d-flex justify-content-between">
+                            <div>
+                                <span class="current-bid">Highest Bid: </span>
+                                <span class="current-bid-price"> ₱ 0</span>
+                            </div>
+                            <div>
+                                <span class="current-bid red">0 Bids</span>
+                            </div>
+                        </div>
+
+                        <div class="product-hover-action boxshadow-unset text-center">
+                            <ul>
+                                <li>
+                                    <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal"
+                                       data-products-id="{{ row.product_id }}"
+                                       data-products-name="{{ row.product_name }}"
+                                       data-products-old-price="0"
+                                       data-products-new-price="0"
+                                       data-products-photo="{{ row.product_photo }}">
+                                        <i class="far fa-eye"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" title="Bid Now">
+                                        <i class="fa fa-gavel" aria-hidden="true"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#" title="Wishlist" data-bs-toggle="modal" data-bs-target="#addtowishlist_modal"
+                                       data-products-name="{{ row.product_name }}"
+                                       data-products-photo="{{ row.product_photo }}">
+                                       <i class="far fa-heart"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+            {% endfor %}
+
+        </div>
+    </div>
+</div>

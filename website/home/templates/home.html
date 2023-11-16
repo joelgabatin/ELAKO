@@ -1,0 +1,37 @@
+{% extends 'website/website_base.html' %}
+
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+
+    <!-- SECTION BANNER -->
+    {% include 'includes/section_banner.html' %}
+    <!-- SECTION CATEGORIES-->
+{#    {% include 'includes/section_categories.html' %}#}
+    <!-- SECTION ACTIVE BIDDING -->
+
+    {% include 'includes/section_activebidding.html' %}
+    <!-- SECTION UPCOMING BIDDING -->
+    {% include 'includes/section_upcomingbidding.html' %}
+    <!-- SECTION ENDED BIDDING-->
+    {% include 'includes/section_endedbidding.html' %}
+    <!-- SECTION FARMERS -->
+    {% include 'includes/section_farmers.html' %}
+
+    <div class="product-badge">
+        <ul>
+            <li id="countdown-timer"></li>
+        </ul>
+    </div>
+{% endblock %}
+
+{########################################################################################################################################}
+{# include the static css of page#}
+{% block page_static_css %}
+    <link rel="stylesheet" href=" {{ url_for('w_home_bp.static', filename='css/home.css') }} ">
+{% endblock %}
+
+{# include the static js of page#}
+{% block page_static_js %}
+    <script src="{{ url_for('w_home_bp.static', filename='js/home.js') }}"></script>
+{% endblock %}

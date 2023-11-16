@@ -1,0 +1,43 @@
+<aside class="sidebar ltn__shop-sidebar ltn__right-sidebar">
+    <!-- Category Widget -->
+    <div class="widget ltn__menu-widget">
+        <h4 class="ltn__widget-title ltn__widget-title-border">Product categories</h4>
+        <ul>
+            {% for row in product_cat %}
+            <li><a href="javascript:void(0)">{{ row.products_cat_name | title }} </a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Category Widget -->
+    <div class="widget ltn__menu-widget">
+        <h4 class="ltn__widget-title ltn__widget-title-border">Bidding Status</h4>
+        <ul>
+            <li><a href="javascript:void(0)">Active</a></li>
+            <li><a href="javascript:void(0)">Upcoming</a></li>
+            <li><a href="javascript:void(0)">Ended</a></li>
+        </ul>
+    </div>
+
+    <!-- Price Filter Widget -->
+    <div class="widget ltn__price-filter-widget">
+        <h4 class="ltn__widget-title ltn__widget-title-border">Price</h4>
+        <div class="price_filter">
+            <div class="price_slider_amount">
+                <input type="submit" value="Your range:"/>
+                <input type="text" class="amount" name="price" placeholder="Add Your Price"/>
+            </div>
+            <div class="slider-range"></div>
+        </div>
+    </div>
+    <!-- Size Widget -->
+    <div class="widget ltn__tagcloud-widget ltn__size-widget">
+        <h4 class="ltn__widget-title ltn__widget-title-border">Product Size</h4>
+        <ul>
+            {% for row in size_cat %}
+            <li><a href="javascript:void(0)">{{ row.products_size | title }} </a></li>
+            {% endfor %}
+        </ul>
+    </div>
+
+</aside>

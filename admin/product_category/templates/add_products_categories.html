@@ -1,0 +1,43 @@
+{# put it in block set in website_base.html #}
+{% extends "admin/admin_base.html" %}
+
+{# Get the parameters sent in app and #}
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block content %}
+<!-- include content in admin_base.html template-->
+    <!-- Start Content-->
+    <div class="container">
+        <nav class="mb-2" aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item">Products</li>
+            <li class="breadcrumb-item active">View All Products Category</li>
+          </ol>
+        </nav>
+        <h2 class="text-bold text-1100 mb-5">Products Category</h2>
+        <!-- end page title -->
+
+     <div class="row g-3">
+            <form method="POST" action="{{ url_for('admin_product_category_bp.add_products_categories') }}" >
+                <div class="col-lg-12 mb-3">
+                    <label for="simpleinput" class="form-label text-1000 fw-bold fs-0 ps-0 text-capitalize lh-sm">Category Name</label>
+                    <input type="text" id="category_name" name="category_name" placeholder="Enter Category Name" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="address" class="form-label text-1000 fw-bold fs-0 ps-0 text-capitalize lh-sm">Category Description</label>
+                    <textarea class="form-control" name="category_description" id="category_description" placeholder="Enter Category Description" rows=5 required></textarea>
+                </div>
+                <div class="btn-wrapper">
+                    <button class="btn btn-primary px-7" type="submit">Add</button>
+                </div>
+            </form>
+
+    </div><!-- end row -->
+
+
+    </div> <!-- container -->
+
+
+{% endblock %}

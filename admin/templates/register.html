@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Login</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta content="A fully featured admin theme which can be used to build CRM, CMS, etc." name="description" />
+        <meta content="Coderthemes" name="author" />
+
+        <!-- App favicon -->
+        <link rel="shortcut icon" href="{{ url_for('static', filename='assets/images/favicon.ico' )}}">
+        <!-- Plugin css -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/vendor/bootstrap-datepicker/css/bootstrap-datepicker.min.css')}}"/>
+        <!-- Theme Config Js -->
+        <script src="{{ url_for('static', filename='assets/js/hyper-config.js' )}}"></script>
+        <!-- App css -->
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='assets/css/app-saas.min.css')}}"/>
+         <!-- Icons css -->
+        <link rel="stylesheet" type="text/css" id="app-style"  href="{{ url_for('static', filename='assets/css/icons.min.css')}}"/>
+
+    </head>
+
+    <body class="authentication-bg">
+
+        <div class="auth-fluid row">
+
+            <!--Auth fluid left content -->
+             <div class="auth-fluid-form-box" style="max-width: 800px!important;">
+                <div class="card-body d-flex flex-column h-100 gap-3">
+
+                    <!-- Logo -->
+                    <div class="auth-brand text-center text-lg-start my-0 m-auto">
+                        <a href="{{ url_for('index' )}}" class="logo-dark">
+                            <span><img src="{{ url_for('static', filename='assets/images/logo-dark.png' )}}" alt="dark logo" height="80"></span>
+                        </a>
+                        <a href="{{ url_for('index' )}}" class="logo-light">
+                            <span><img src="{{ url_for('static', filename='assets/images/logo-dark-sm.png' )}}" alt="logo" height="80"></span>
+                        </a>
+                    </div>
+
+                    <div class="my-0">
+                        <!-- title-->
+                        <div class="d-flex align-items-center justify-content-center mb-3">
+                            <i class="ri-account-pin-circle-line" style="font-size: 40px; color: #B56952;">&nbsp;</i>
+                            <h4 class="my-3 text-center">Sign Up Now!</h4>
+                        </div>
+
+                        <!-- form -->
+                        <form method="POST" action="{{ url_for('user_register') }}">
+                            {{ form.hidden_tag() }}
+                            <div class="row">
+                                <div class="mb-3 col-md-6">
+                                    <label for="first_name" class="form-label">First Name</label>
+                                    {{ form.first_name(class="form-control", placeholder="Enter your first name", required="required") }}
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="last_name" class="form-label">Last Name</label>
+                                    {{ form.last_name(class="form-control", placeholder="Enter your last name", required="required") }}
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="email" class="form-label">Email address</label>
+                                    {{ form.email(class="form-control", placeholder="Enter your email", required="required") }}
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="contact_number" class="form-label">Contact Number</label>
+                                    {{ form.contact_number(class="form-control", placeholder="Enter your contact number", required="required") }}
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="password" class="form-label">Password</label>
+                                    {{ form.password(class="form-control", placeholder="Enter your password", required="required") }}
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <label for="confirm_password" class="form-label">Confirm Password</label>
+                                    {{ form.confirm_password(class="form-control", placeholder="Re-enter your password", required="required") }}
+                                </div>
+                                <div class="mb-3 col-md-6">
+                                    <div class="form-check">
+                                        {{ form.accept_terms(class="form-check-input", id="checkbox-signup") }}
+                                        <label class="form-check-label" for="checkbox-signup">I accept <a href="javascript: void(0);" class="text-muted" required>Terms and Conditions</a></label>
+                                    </div>
+                                </div>
+                                <div class="mb-0 d-grid text-center">
+                                    <button class="btn btn-primary" type="submit"> Sign Up </button>
+                                     <p class="text-muted my-4">Already have an account? <a href="{{ url_for('login') }}" class="text-muted ms-1"><b>Log In</b></a></p>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- end form -->
+
+                        <!-- end form-->
+                    </div>
+
+                </div> <!-- end .card-body -->
+             </div>
+            <!-- end auth-fluid-form-box-->
+
+            <!-- Auth fluid right content -->
+            <div class="auth-fluid-right text-center">
+                <div class="auth-user-testimonial">
+{#                    <h2 class="mb-3">Welcome to Our Hotel </h2>#}
+{#                    <p class="lead">#}
+{#                        <i class="mdi mdi-format-quote-open"></i> Get ready for an amazing experience! You're now part of something extraordinary! <i class="mdi mdi-format-quote-close"></i>#}
+{#                    </p>#}
+{#                    <p>#}
+{#                        - Hotel Reservation Management#}
+{#                    </p>#}
+                </div> <!-- end auth-user-testimonial-->
+            </div>
+            <!-- end Auth fluid right content -->
+
+        </div>
+
+
+        <!-- Vendor js -->
+        <script src="{{ url_for('static', filename='assets/js/vendor.min.js')}}"></script>
+        <!-- App js -->
+        <script src="{{ url_for('static', filename='assets/js/app.min.js')}}"></script>
+
+    </body>
+</html>

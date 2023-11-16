@@ -1,0 +1,65 @@
+{# put it in block set in website_base.html #}
+{% extends "admin/admin_base.html" %}
+
+{# Get the parameters sent in app and #}
+{% block title %}{{ title }}{% endblock %}
+
+
+{% block content %}
+<!-- include content in admin_base.html template-->
+    <!-- Start Content-->
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item active"><a href="#">Add Products Category</a></li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Add Products Category</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+     <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body">
+
+
+                    <div class="tab-content">
+                        <div class="tab-pane show active" id="input-types-preview">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <form method="POST" action="{{ url_for('adminside.add_products_categories_now') }}" >
+                                        <div class="col-lg-12 mb-3">
+                                            <label for="simpleinput" class="form-label">Category Name</label>
+                                            <input type="text" id="category_name" name="category_name" class="form-control">
+                                        </div>
+                                        <div class="btn-wrapper">
+                                            <button type="submit" class="btn btn-primary mb-2">Add</button>
+                                        </div>
+
+                                    </form>
+                                </div> <!-- end col -->
+
+                            </div>
+                            <!-- end row-->
+                        </div> <!-- end preview-->
+
+                        <!-- end preview code-->
+                    </div> <!-- end tab-content-->
+                </div> <!-- end card-body -->
+            </div> <!-- end card -->
+        </div><!-- end col -->
+    </div><!-- end row -->
+
+
+    </div> <!-- container -->
+
+
+{% endblock %}

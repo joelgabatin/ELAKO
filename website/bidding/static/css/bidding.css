@@ -1,0 +1,51 @@
+/*
+------------------------------------------------------
+------------------------------------------------------
+This is the css per page, any changes to the page
+------------------------------------------------------
+------------------------------------------------------
+*/
+
+/* Add your CSS styles for the contact page here */
+
+/* Center-align the form */
+form {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Style form elements */
+.form-group {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+}
+
+input[type="text"],
+input[type="email"],
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Add more styles as needed */

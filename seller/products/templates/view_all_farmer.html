@@ -1,0 +1,107 @@
+{% extends 'admin/admin_base.html' %}
+
+{% block title %}View All Farmer{% endblock %}
+
+{########################################################################################################################################}
+
+{% block content %}
+
+
+    <!-- Start Content-->
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="#">Farmer</a></li>
+                            <li class="breadcrumb-item active">View All Farmer</li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">View All Farmer</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane show active" id="basic-datatable-preview">
+                                <table id="farmers" class="table table-striped dt-responsive nowrap w-100">
+                                    <thead>
+                                        <tr>
+                                            <th>User ID</th>
+                                            <th>Profile Picture</th>
+                                            <th>Username</th>
+                                            <th>Password</th>
+                                            <th>Full Name</th>
+                                            <th>Phone Number</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for row in all_farmer_data %}
+                                        <tr>
+                                            <th>{{ row.user_id }}</th>
+                                            <th><img src="{{ url_for('static', filename='uploads/'+ row.profile_picture) }}" style="max-width: 100px; max-height: 100px;"></th>
+                                            <th>{{ row.username }}</th>
+                                            <th>{{ row.password }}</th>
+                                            <th>{{ row.full_name }}</th>
+                                            <th>{{ row.phone_number }}</th>
+                                            <th>{{ row.address }}</th>
+                                            <th>{{ row.status }}</th>
+                                            <th>
+                                                <a href="{{ url_for('admin_farmer_bp.edit_farmer', user_id=row.user_id) }}" class="btn btn-sm btn-info"><i class="ri-pencil-fill"></i></a>
+                                                <a href="{{ url_for('admin_farmer_bp.delete_farmer', user_id=row.user_id) }}" class="btn btn-sm btn-danger" onclick="return confirmDelete();"><i class="ri-delete-bin-6-line"></i></a>
+                                            </th>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+
+                                </table>
+                            </div> <!-- end preview-->
+                        </div> <!-- end tab-content-->
+                    </div> <!-- end card body-->
+                </div> <!-- end card -->
+            </div><!-- end col-->
+        </div> <!-- end row-->
+
+    </div> <!-- container -->
+
+
+{% endblock %}
+
+{########################################################################################################################################}
+
+{# include the static css of page#}
+{% block page_static_css %}
+
+    <!-- Datatables css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='admin/assets/vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='admin/assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css')}}"/>
+
+     <!-- rooms_view CSS -->
+    <link rel="stylesheet" href="{{ url_for('admin_farmer_bp.static', filename='css/farmer_view.css') }}">
+
+{% endblock %}
+
+{# include the static js of page#}
+{% block page_static_js %}
+
+    <!-- Datatables js -->
+    <script src="{{ url_for('static', filename='admin/assets/vendor/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='admin/assets/vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='admin/assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='admin/assets/vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js')}}"></script>
+
+    <!-- rooms_view JS -->
+    <script src="{{  url_for('admin_farmer_bp.static', filename='js/farmer_view.js') }}"></script>
+
+{% endblock %}
+

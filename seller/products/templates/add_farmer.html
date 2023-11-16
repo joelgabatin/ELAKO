@@ -1,0 +1,118 @@
+{% extends 'admin/admin_base.html' %}
+
+{% block title %}Add Farmer{% endblock %}
+
+{########################################################################################################################################}
+
+{% block content %}
+
+    <!-- Start Content-->
+    <div class="container-fluid">
+
+        <!-- start page title -->
+        <div class="row">
+            <div class="col-12">
+                <div class="page-title-box">
+                    <div class="page-title-right">
+                        <ol class="breadcrumb m-0">
+                            <li class="breadcrumb-item"><a href="#">Farmer</a></li>
+                            <li class="breadcrumb-item active">Add New Farmer</li>
+                        </ol>
+                    </div>
+                    <h4 class="page-title">Add New Farmer</h4>
+                </div>
+            </div>
+        </div>
+        <!-- end page title -->
+
+        <div class="row justify-content-center">
+
+            <form action="{{ url_for('admin_farmer_bp.add_farmer') }}" method="POST" enctype="multipart/form-data">
+
+            <div class="mb-3">
+                <img id="image-preview" alt="Image Preview" style="max-width: 400px; max-height: 400px;">
+            </div>
+
+            <div class="mb-3">
+                <label for="profile-picture" class="form-label">Profile Picture</label>
+                <input type="file" class="form-control" name="image" id="image" accept="image/*" onchange="previewImage(this)" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <input type="text" class="form-control" name="username" id="username" placeholder="Note: System will generate default username, You cant fill this out!" disabled>
+            </div>
+
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" name="password" id="password" placeholder="Note: System will generate default password, You cant fill this out!" disabled required>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" name="email" id="email" placeholder="Enter Email" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="full-name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" name="full-name" id="full-name" placeholder="Enter Full Name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="phone-number" class="form-label">Phone Number</label>
+                <input type="text" class="form-control" name="phone-number" id="phone-number" placeholder="Enter Phone Number" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <textarea class="form-control" name="address" id="address" placeholder="Enter Address" rows=5 required></textarea>
+            </div>
+
+            <div class="mb-3">
+                <label for="date-of-birth" class="form-label">Date of Birth</label>
+                <input type="date" class="form-control" name="date-of-birth" id="date-of-birth" required>
+            </div>
+
+            <div class="text-left mt-3 mb-5">
+                <button type="submit" class="btn btn-primary">Add</button>
+            </div>
+
+        </form>
+
+        </div>
+
+    </div> <!-- container -->
+
+
+{% endblock %}
+
+{########################################################################################################################################}
+
+{# include the static css of page#}
+{% block page_static_css %}
+
+    <!-- rooms_view CSS -->
+    <link rel="stylesheet" href="{{ url_for('admin_farmer_bp.static', filename='css/farmer_view.css') }}">
+
+{% endblock %}
+
+{# include the static js of page#}
+{% block page_static_js %}
+
+     <!-- rooms_view JS -->
+    <script src="{{  url_for('admin_farmer_bp.static', filename='js/farmer_view.js') }}"></script>
+    <script>
+        function previewImage(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    var imagePreview = document.getElementById('image-preview');
+                    imagePreview.src = e.target.result;
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+{% endblock %}

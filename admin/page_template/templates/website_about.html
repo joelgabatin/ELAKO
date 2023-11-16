@@ -1,0 +1,23 @@
+{% extends 'website/website_base.html' %}
+
+{% block title %}Home Page{% endblock %}
+
+{% block content %}
+ <div class="container text-center">
+    <h1 style="color: lightseagreen;" class="mb-3">Welcome to the About Page</h1>
+    <img src="{{ url_for('website_about.static', filename='img/aboutus.jpg') }}" alt="Image" class="img-fluid w-100">
+</div>
+{% endblock %}
+
+
+{########################################################################################################################################}
+
+{# include the static css of page#}
+{% block page_static_css %}
+    <link rel="stylesheet" href="{{ url_for('website_about.static', filename='css/page.css') }}">
+{% endblock %}
+
+{# include the static js of page#}
+{% block page_static_js %}
+    <script src="{{  url_for('website_about.static', filename='js/page.js') }}"></script>
+{% endblock %}

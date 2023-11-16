@@ -1,0 +1,92 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>E-LAKO | WEBSITE</title>
+    <meta name="robots" content="noindex, follow" />
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Place logo-sm.png in the root directory -->
+    <link rel="shortcut icon" href="{{ url_for('static', filename='website/img/favicon.png')}}" type="image/x-icon" />
+    <!-- Font Icons css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='website/css/font-icons.css')}}">
+    <!-- plugins css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='website/css/plugins.css')}}">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='website/css/style.css')}}">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='website/css/responsive.css')}}">
+    <!-- Page Static CSS -->
+    {% block page_static_css%}{% endblock %}
+</head>
+
+<body>
+
+
+<!-- Body main wrapper start -->
+<div class="body-wrapper">
+
+    <!-- HEADER AREA START (header-5) -->
+    {% include 'website/includes/header/header2.html' %}
+    <!-- HEADER AREA END -->
+
+    <!-- Utilize Wishlist Menu-->
+    {% include 'website/includes/menu/menu_wishlist.html' %}
+    <!-- Utilize Wishlist Menu End -->
+
+    <!-- Utilize Mobile Menu Start -->
+    {% include 'website/includes/menu/menu_mobile.html' %}
+    <!-- Utilize Mobile Menu End -->
+
+    <div class="ltn__utilize-overlay"></div>
+
+
+    <!-- ####################################################### -->
+    <!-- MAIN CONTENT -->
+         {% block content%}{% endblock %}
+    <!-- /.MAIN CONTENT END  -->
+    <!-- ####################################################### -->
+
+    <!-- FOOTER AREA START -->
+    {% include 'website/includes/footer/footer.html' %}
+    <!-- FOOTER AREA END -->
+
+    <!-- ADD TO CART MODAL -->
+    {% include 'website/includes/modal/modal_addtocart.html' %}
+     <!-- QUICK VIEW MODAL -->
+    {% include 'website/includes/modal/modal_quickview.html' %}
+     <!-- UPCOMING BIDDING MODAL -->
+    {% include 'website/includes/modal/modal_upcomingbidding.html' %}
+     <!-- WISHLIST MODAL-->
+    {% include 'website/includes/modal/modal_wishlist.html' %}
+
+</div>
+<!-- Body main wrapper end -->
+
+    <!-- preloader area start -->
+    <div class="preloader d-none" id="preloader">
+        <div class="preloader-inner">
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- All JS Plugins -->
+    <script src="{{ url_for('static', filename='website/js/plugins.js')}}"></script>
+    <!-- Main JS -->
+    <script src="{{ url_for('static', filename='website/js/main.js')}}"></script>
+    <!-- Page Static JS -->
+    {% block page_static_js%}{% endblock %}
+
+</body>
+
+</html>
+

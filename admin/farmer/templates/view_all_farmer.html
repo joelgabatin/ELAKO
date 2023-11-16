@@ -1,0 +1,112 @@
+{% extends 'admin/admin_base.html' %}
+
+{% block title %}ELAKO | ADMIN{% endblock %}
+
+{########################################################################################################################################}
+
+{% block content %}
+    <div class="container">
+        <nav class="mb-2" aria-label="breadcrumb">
+          <ol class="breadcrumb mb-0">
+            <li class="breadcrumb-item"><a href="#">Dashboard</a></li>
+            <li class="breadcrumb-item">Farmers</li>
+            <li class="breadcrumb-item active">View All Farmers</li>
+          </ol>
+        </nav>
+        <h2 class="text-bold text-1100 mb-5">Farmers</h2>
+        <div id="members" data-list='{"valueNames":["farmer_id","farmer","username","password","status"],"page":10,"pagination":true}'>
+          <div class="row align-items-center justify-content-between g-3 mb-4">
+            <div class="col col-auto">
+              <div class="search-box">
+                <form class="position-relative" data-bs-toggle="search" data-bs-display="static"><input class="form-control search-input search" type="search" placeholder="Search Farmers" aria-label="Search" />
+                  <span class="fas fa-search search-box-icon"></span>
+                </form>
+              </div>
+            </div>
+            <div class="col-auto">
+              <div class="d-flex align-items-center">
+                  <a class="btn btn-primary" href="{{ url_for('admin_farmer_bp.add_farmer') }}"><span class="fas fa-plus me-2"></span>Add New Farmer</a></div>
+            </div>
+          </div>
+          <div class="mx-n4 mx-lg-n6 px-4 px-lg-6 mb-9 bg-white border-y border-300 mt-2 position-relative top-1">
+            <div class="table-responsive scrollbar ms-n1 ps-1">
+              <table class="table table-sm fs--1 mb-0">
+                <thead>
+                  <tr>
+                    <th class="sort align-middle" scope="col" data-sort="farmer_id" style="width:15%; min-width:200px;">FARMER ID</th>
+                    <th class="sort align-middle" scope="col" data-sort="farmer" style="width:15%; min-width:200px;">FARMER </th>
+                    <th class="sort align-middle pe-3" scope="col" data-sort="username" style="width:20%; min-width:200px;">USERNAME</th>
+                    <th class="sort align-middle" scope="col" data-sort="password" style="width:10%;">PASSWORD</th>
+                    <th class="sort align-middle text-center" scope="col" data-sort="status" style="width:10%;  min-width:200px;">STATUS</th>
+                    <th class="sort align-middle pe-0" scope="col" data-sort="action" style="width:30%;  min-width:200px;">ACTION</th>
+                  </tr>
+                </thead>
+
+                <tbody class="list" id="members-table-body">
+                 {% for row in all_farmer_data %}
+                      <tr class="hover-actions-trigger btn-reveal-trigger position-static">
+                        <td class="farmer_id align-middle white-space-nowrap">{{ row.user_id }} </td>
+                        <td class="farmer align-middle white-space-nowrap">
+                            <a class="d-flex align-items-center text-1000 text-hover-1000" href="#">
+                                <div class="avatar avatar-m"><img class="rounded-circle" src="{{ url_for('static', filename='uploads/farmers/'+ row.profile_picture) }}" alt="" /></div>
+                                <h6 class="mb-0 ms-3 fw-semi-bold">{{ row.full_name }} </h6>
+                            </a>
+                        </td>
+                        <td class="username align-middle white-space-nowrap"><a class="fw-semi-bold" href="mailto:annac34@gmail.com">{{ row.username }}</a></td>
+                        <td class="password align-middle white-space-nowrap"><a class="fw-bold text-1100" href="tel:+912346578">{{ row.password }}</a></td>
+                        <td class="status align-middle white-space-nowrap text-900 text-center">{{ row.status }}</td>
+                        <td class="align-middle white-space-nowrap pe-0 action py-2">
+                            <div class="font-sans-serif btn-reveal-trigger position-static"><button class="btn btn-sm dropdown-toggle dropdown-caret-none transition-none btn-reveal" type="button" data-bs-toggle="dropdown" data-boundary="window" aria-haspopup="true" aria-expanded="false" data-bs-reference="parent"><svg class="svg-inline--fa fa-ellipsis fs--2" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="ellipsis" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M120 256C120 286.9 94.93 312 64 312C33.07 312 8 286.9 8 256C8 225.1 33.07 200 64 200C94.93 200 120 225.1 120 256zM280 256C280 286.9 254.9 312 224 312C193.1 312 168 286.9 168 256C168 225.1 193.1 200 224 200C254.9 200 280 225.1 280 256zM328 256C328 225.1 353.1 200 384 200C414.9 200 440 225.1 440 256C440 286.9 414.9 312 384 312C353.1 312 328 286.9 328 256z"></path></svg><!-- <span class="fas fa-ellipsis-h fs--2"></span> Font Awesome fontawesome.com --></button>
+                              <div class="dropdown-menu py-2">
+                                  <a class="dropdown-item" href="{{ url_for('admin_farmer_bp.edit_farmer', user_id=row.user_id) }}">View</a>
+                                <div class="dropdown-divider"></div><a class="dropdown-item text-danger" href="{{ url_for('admin_farmer_bp.delete_farmer', user_id=row.user_id) }}" onclick="return confirmDelete();">Remove</a>
+                              </div>
+                            </div>
+                        </td>
+                      </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <div class="row align-items-center justify-content-between py-2 pe-0 fs--1">
+              <div class="col-auto d-flex">
+                <p class="mb-0 d-none d-sm-block me-3 fw-semi-bold text-900" data-list-info="data-list-info"></p><a class="fw-semi-bold" href="#!" data-list-view="*">View all<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a><a class="fw-semi-bold d-none" href="#!" data-list-view="less">View Less<span class="fas fa-angle-right ms-1" data-fa-transform="down-1"></span></a>
+              </div>
+              <div class="col-auto d-flex"><button class="page-link" data-list-pagination="prev"><span class="fas fa-chevron-left"></span></button>
+                <ul class="mb-0 pagination"></ul><button class="page-link pe-0" data-list-pagination="next"><span class="fas fa-chevron-right"></span></button>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{########################################################################################################################################}
+
+{# include the static css of page#}
+{% block page_static_css %}
+
+    <!-- Datatables css -->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='admin/assets/vendor/datatables.net-bs5/css/dataTables.bootstrap5.min.css')}}"/>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='admin/assets/vendor/datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css')}}"/>
+
+     <!-- rooms_view CSS -->
+    <link rel="stylesheet" href="{{ url_for('admin_farmer_bp.static', filename='css/farmer_view.css') }}">
+
+{% endblock %}
+
+{# include the static js of page#}
+{% block page_static_js %}
+
+    <!-- Datatables js -->
+    <script src="{{ url_for('static', filename='admin/assets/vendor/datatables.net/js/jquery.dataTables.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='admin/assets/vendor/datatables.net-bs5/js/dataTables.bootstrap5.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='admin/assets/vendor/datatables.net-responsive/js/dataTables.responsive.min.js')}}"></script>
+    <script src="{{ url_for('static', filename='admin/assets/vendor/datatables.net-responsive-bs5/js/responsive.bootstrap5.min.js')}}"></script>
+
+    <!-- rooms_view JS -->
+    <script src="{{  url_for('admin_farmer_bp.static', filename='js/farmer_view.js') }}"></script>
+
+{% endblock %}
+
